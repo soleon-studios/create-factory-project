@@ -66,6 +66,8 @@ Open http://localhost:3000 to view the local build.
 ## Project Structure
 
 - test
+- public
+  - screenshots
 - src/
   - api/
   - app/api
