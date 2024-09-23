@@ -3,7 +3,6 @@
   border-radius: 10px;
   width: 350px;
   height: 80px;
-  /* padding: 20px; */
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
@@ -68,7 +67,8 @@
   height: 50px;
   width: 80%;
   text-align: end;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 700;
   font-family: var(--font-geist-sans);
 }
 
