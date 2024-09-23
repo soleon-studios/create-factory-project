@@ -16,21 +16,70 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# NextJS Currency Converter Web-app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is a sample web application built with NextJS, Typescript and Jest as part as a Coding Challenge for Creative Factory.
 
-## Learn More
+## Table of Contents
 
-To learn more about Next.js, take a look at the following resources:
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/soleon-studios/creative-factory-project.git
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Navigate to the project folder:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   cd create-factory-project
+   ```
+
+3. **Install dependencies:**
+
+   ```bash
+   yarn
+   ```
+
+## Usage
+
+1. **Start the development server:**
+
+   ```bash
+   yarn dev
+   ```
+
+2. **Run the tests (run the command in the root directory):**
+
+   ```bash
+   yarn test
+   ```
+
+Open http://localhost:3000 to view the local build.
+
+## Project Structure
+
+- test
+- src/
+  - api/
+  - app/api
+  - app/components
+  - app/context
+  - app/fonts
+  - app/icons
+  - app/pages
+  - app/types
+  - app/ui
+  - app/utils
+
+## Technologies Used
+
+- NextJS: Full stack React framework application.
+- Jest: For Testing.
+- Typescript: Strongly typed programming language.
