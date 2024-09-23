@@ -38,7 +38,7 @@ This project is a sample web application built with NextJS, Typescript and Jest 
 2. **Navigate to the project folder:**
 
    ```bash
-   cd create-factory-project
+   cd creative-factory-project/creative-factory-project
    ```
 
 3. **Install dependencies:**
