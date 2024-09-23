@@ -27,6 +27,10 @@ export const InputCurrency = ({
   const [convertingValue, setConvertingValue] = useState<string>(value);
   const { fetchCurrencies, isCurrencyConvertLoaded } = useCurrency();
 
+  const formatedValue = Number(value).toLocaleString(undefined, {
+    maximumFractionDigits: 2,
+  });
+
   return (
     <>
       <div className={styles.container}>
@@ -60,9 +64,9 @@ export const InputCurrency = ({
                 }}
               />
             ) : (
-              <p className={styles.currencyAmount}>{`${symbol}${parseFloat(
-                value
-              ).toFixed(2)}`}</p>
+              <p
+                className={styles.currencyAmount}
+              >{`${symbol}${formatedValue}`}</p>
             )}
             {!isTargetCurrency && rate && (
               <p className={styles.currencyRate}>{`1 AUD = ${parseFloat(
