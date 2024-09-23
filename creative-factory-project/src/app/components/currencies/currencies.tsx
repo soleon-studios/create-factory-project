@@ -18,7 +18,7 @@ export const Currencies = () => {
           />
         ))
       ) : (
-        <p>Issues fetching data, please try again later...</p>
+        <p>Fetching currency data...</p>
       )}
     </>
   );
