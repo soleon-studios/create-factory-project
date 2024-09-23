@@ -55,9 +55,9 @@ export const InputCurrency = ({
                 defaultValue={1000}
                 decimalsLimit={2}
                 onValueChange={async (value) => {
-                  setConvertingValue(value ?? '');
+                  setConvertingValue(value ?? '0');
                   const debouncedApiCall = debounce(
-                    () => fetchCurrencies(value ?? ''),
+                    () => fetchCurrencies(value ?? '0'),
                     500
                   );
                   await debouncedApiCall();
