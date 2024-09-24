@@ -1,15 +1,16 @@
 'use client';
 
-import { InputCurrency } from '@/app/ui';
+import { Currency } from '@/app/ui';
 import { useCurrency } from '@/app/context/CurrencyContext';
 
 export const Currencies = () => {
   const { currencyState } = useCurrency();
+
   return (
     <>
       {currencyState.length > 0 ? (
         currencyState.map((currency, idx) => (
-          <InputCurrency
+          <Currency
             key={`${idx}-${currency}`}
             currency={currency.currency}
             rate={currency.rate}

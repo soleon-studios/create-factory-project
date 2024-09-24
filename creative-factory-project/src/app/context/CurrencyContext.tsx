@@ -1,6 +1,6 @@
 'use client';
 
-import { getCurrencyConverted } from '@/api/currency';
+import { getCurrencyConverted, getPastHistoricalData } from '@/api/currency';
 import React, {
   createContext,
   useContext,
@@ -8,12 +8,17 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
-import { Currency } from '../api/currency/route';
+import { Currency } from '../api/currency/convert/route';
+import { Currency as CurrencyType } from '../types/currencies';
+import { HistoricalData } from '../api/currency/historical/route';
 
 type CurrencyContextType = {
   currencyState: Currency[];
   isCurrencyConvertLoaded: boolean;
   fetchCurrencies: (value: string) => Promise<void>;
+  fetchHistoricalData: (toCurrency: CurrencyType) => Promise<void>;
+  historicalData: HistoricalData[];
+  resetHistoricalData: () => void;
 };
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(
@@ -34,8 +39,11 @@ type CurrencyProviderProps = {
 
 export const CurrencyProvider = ({ children }: CurrencyProviderProps) => {
   const [currencyState, setCurrencyState] = useState<Currency[]>([]);
+  const [historicalData, setHistoricalData] = useState<HistoricalData[]>([]);
   const [isCurrencyConvertLoaded, setIsCurrencyConvertLoaded] =
     useState<boolean>(true);
+
+  const resetHistoricalData = () => setHistoricalData([]);
 
   const fetchCurrencies = async (value: string) => {
     setIsCurrencyConvertLoaded(false);
@@ -57,6 +65,23 @@ export const CurrencyProvider = ({ children }: CurrencyProviderProps) => {
     }
   };
 
+  const fetchHistoricalData = async (toCurrency: CurrencyType) => {
+    try {
+      const convertedCurrencies = await getPastHistoricalData(
+        'AUD',
+        toCurrency
+      ).then((data) => data.json());
+
+      if (!convertedCurrencies.success) {
+        throw new Error('Could not fetch historical data');
+      }
+
+      setHistoricalData(convertedCurrencies.data.historicalData);
+    } catch (error) {
+      console.error('Failed to fetch historical data', error);
+    }
+  };
+
   useEffect(() => {
     fetchCurrencies('1000');
   }, []);
@@ -67,6 +92,9 @@ export const CurrencyProvider = ({ children }: CurrencyProviderProps) => {
         currencyState,
         fetchCurrencies,
         isCurrencyConvertLoaded,
+        fetchHistoricalData,
+        historicalData,
+        resetHistoricalData,
       }}
     >
       {children}
