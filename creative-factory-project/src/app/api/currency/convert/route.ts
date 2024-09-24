@@ -21,7 +21,7 @@ interface DefaultResponse<T> {
   data?: T;
 }
 
-// To handle a GET request to /api
+// To handle a GET request to /api/currency/convert
 export async function GET(
   request: NextRequest
 ): Promise<NextResponse<DefaultResponse<CurrencyResponse>>> {

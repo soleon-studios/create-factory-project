@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
-import { GET } from '@/app/api/currency/route';
-import { routeMockData } from './mockData';
+import { GET } from '@/app/api/currency/convert/route';
+import { routeMockData } from '../mockData';
 
 jest.mock('next/server', () => ({
   NextResponse: {

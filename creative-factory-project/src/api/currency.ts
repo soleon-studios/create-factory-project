@@ -1,4 +1,4 @@
-import { DefaultCurrency } from '@/app/types/currencies';
+import { Currency, DefaultCurrency } from '@/app/types/currencies';
 
 interface GetCurrencyConverted {
   value: string | undefined;
@@ -13,10 +13,25 @@ export const getCurrencyConverted = async ({
     throw new Error('Value is empty');
   }
   const convertedResult = fetch(
-    '/api/currency?' +
+    '/api/currency/convert?' +
       new URLSearchParams({
         value,
         from,
+      }).toString()
+  );
+
+  return convertedResult;
+};
+
+export const getPastHistoricalData = async (
+  from: DefaultCurrency,
+  to: Currency
+) => {
+  const convertedResult = fetch(
+    '/api/currency/historical?' +
+      new URLSearchParams({
+        from,
+        to,
       }).toString()
   );
 
